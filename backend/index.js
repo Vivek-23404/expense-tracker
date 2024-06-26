@@ -27,8 +27,10 @@ const corsOptions = {
   methods: "GET,POST,PUT,DELETE,PATCH",
   credentials : true,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*"
   },
+  
 }
 app.use(cors(corsOptions))
 
