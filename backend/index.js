@@ -23,8 +23,8 @@ app.use(cookieParser())
 
 const corsOptions = {
   // origin : "http://localhost:5173",
-  // origin : "https://expense-tracker-taupe-nine.vercel.app",
-  origin : "*",
+  origin : "https://expense-tracker-taupe-nine.vercel.app",
+  // origin : "*",
   // methods: "GET,POST,PUT,DELETE,PATCH",
   methods: ["GET","POST","PUT","DELETE","PATCH"],
   credentials : true,
