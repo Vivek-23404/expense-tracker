@@ -3,7 +3,7 @@ import moment from "moment"
 import userModel from "../models/userModels.js"
 import * as csv from "fast-csv"
 
-import * as fs from "fs"
+import  fs from "fs"
 
 
 export const getAllTransaction = async (req,res) =>{
