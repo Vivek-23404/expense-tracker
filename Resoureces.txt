@@ -1,0 +1,3 @@
+Accpunt Page 
+	Profile Component page code : https://tailwindcomponents.com/component/profile-card-2
+

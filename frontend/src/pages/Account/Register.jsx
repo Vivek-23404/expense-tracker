@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Form,Input, message} from "antd"
 import { Link, useNavigate } from 'react-router-dom'
 import { OAuth } from '../../components/OAuth'
+import { baseURL } from '../../main'
 
 
 export const Register = () => {
@@ -29,7 +30,7 @@ export const Register = () => {
     try {
       setLoading(true)
 
-      const result  = await fetch("/api/user/register",{
+      const result  = await fetch(`${baseURL}/api/user/register`,{
         method : "POST",
         headers : {
           "Content-Type" : "application/json"
