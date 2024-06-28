@@ -57,7 +57,10 @@ export const addTransaction = async (req,res) =>{
     // console.log(abc);
 
 
-    res.status(201).send("Transaction Created")
+    res.status(201).json({
+      message : "Transaction Created",
+      success : true
+    })
 
   } catch (error) {
     console.log(error);
@@ -73,7 +76,7 @@ export const getDataForEditTransaction =async (req,res) =>{
     const findTransactionID = await transactionModel.findById(id)
 
     // console.log(findTransactionID);
-    res.send(findTransactionID)
+    res.send(findTransactionID).json(findTransactionID)
   } catch (error) {
     console.log(error);
   }
@@ -100,7 +103,10 @@ export const editTransaction = async (req,res) =>{
     console.log(afterUpdate);
 
 
-    res.send(findID)
+    res.json({
+      success : true,
+      message : "Transaction edited successfullyy"
+    })
   } catch (error) {
     console.log(error);
   }
@@ -200,6 +206,11 @@ export const exportCSV = async (req,res) =>{
 
     csvStream.end()
     writableStream.end()
+
+    res.json({
+      success : true,
+      message : "CSV Download success"
+    })
   } catch (error) {
     res.status(401).json(error)
     console.log(error);

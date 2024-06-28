@@ -59,6 +59,7 @@ export const EditTransaction = () => {
       try {
         e.preventDefault()
         const res = await axiosUrl.get(`/api/transactions/edit-transaction/${id}`)
+        
         // console.log(res.data);
         setReqData(res.data)
       } catch (error) {

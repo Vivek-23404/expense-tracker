@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { loginSuccess } from "../redux/auth/authSlice"
 import { useNavigate } from "react-router-dom"
 import { axiosUrl } from "../main"
+import { message } from "antd"
 
 
 export const OAuth = () => {
@@ -40,6 +41,10 @@ export const OAuth = () => {
 
       const res = await axiosUrl.post("/api/user/google", {name : result.user.displayName, email : result.user.email, photo :  result.user.photoURL})
       const data = await res.data
+
+      if(data.success = true){
+        message.success(data.message)
+      }
 
       console.log(data);
 
