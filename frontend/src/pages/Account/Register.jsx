@@ -8,7 +8,7 @@ import axios from 'axios'
 export const Register = () => {
 
 
-  const baseURL = import.meta.env.VITE_AXIOS_ORIGIN
+  // const baseURL = import.meta.env.VITE_AXIOS_ORIGIN
 
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
