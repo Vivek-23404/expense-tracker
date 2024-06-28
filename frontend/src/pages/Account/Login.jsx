@@ -4,10 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { loginStart,loginSuccess,loginFailure } from '../../redux/auth/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { OAuth } from '../../components/OAuth'
+import { axiosUrl } from '../../main'
 
 export const Login = () => {
 
-  const baseURL = import.meta.env.VITE_AXIOS_ORIGIN
+
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -36,18 +37,22 @@ export const Login = () => {
       dispatch(loginStart())
 
       // setting full url in fetch on login page
-      const result  = await fetch(`${baseURL}/api/user/login`,{
-        method : "POST",
-        headers : {
-          "Content-Type" : "application/json"
-        },
-        body : JSON.stringify(formData)
-      })
-      const data = await result.json()
+      // const result  = await fetch(`${baseURL}/api/user/login`,{
+      //   method : "POST",
+      //   headers : {
+      //     "Content-Type" : "application/json"
+      //   },
+      //   body : JSON.stringify(formData)
+      // })
+      // const data = await result.json()
+
+      const result = await axiosUrl.post("/api/user/login", formData)
+      const data = await result.data
+
 
       
       // console.log(result);
-      // console.log(data);
+      console.log(data);
       
       
       if(data.success === true){

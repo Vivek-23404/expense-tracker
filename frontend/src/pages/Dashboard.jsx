@@ -4,6 +4,7 @@ import {   useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import {Chart as ChartJS, Tooltip, ArcElement,Legend , CategoryScale,LinearScale,registerables} from "chart.js"
 import { Doughnut,Bar } from "react-chartjs-2";
+import { axiosUrl } from "../main";
 
 ChartJS.register(ArcElement,Tooltip,Legend,CategoryScale,LinearScale, ...registerables)
 
@@ -114,7 +115,7 @@ export const Dashboard = () => {
   const getAllTransaction = async () =>{
     try {
       const user = currentUser.rest
-      const response = await axios.post("/api/transactions/gettransaction",{userid: user._id,frequency,selectedDate,type})
+      const response = await axiosUrl.post("/api/transactions/gettransaction",{userid: user._id,frequency,selectedDate,type})
       
       
       const val = await response.data

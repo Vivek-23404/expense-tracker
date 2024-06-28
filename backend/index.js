@@ -14,8 +14,7 @@ const app = express()
 // DB connection
 connectDB()
 const corsOptions = {
-  // origin : "http://localhost:5173",
-  origin : "https://expense-tracker-taupe-nine.vercel.app",
+  origin : ["https://expense-tracker-taupe-nine.vercel.app","http://localhost:5173"],
   // origin : "*",
   // methods: "GET,POST,PUT,DELETE,PATCH",
   methods: ["GET","POST","PUT","DELETE","PATCH"],

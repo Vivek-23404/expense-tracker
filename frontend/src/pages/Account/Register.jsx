@@ -8,6 +8,8 @@ import { axiosUrl } from '../../main'
 
 export const Register = () => {
 
+  // console.log(axiosUrl);
+
 
   // const baseURL = import.meta.env.VITE_AXIOS_ORIGIN
 
@@ -43,11 +45,12 @@ export const Register = () => {
       // })
 
 
-      const result = await axiosUrl.post("/api/user/register", formData)
-      const data = await result.json()
 
-      // console.log(result);
-      // console.log(data);
+      const result = await axiosUrl.post("/api/user/register", formData)
+      
+      const data = await result.data
+      console.log(data);
+
 
       if(data.success === true){
         message.success("Registration Successfully")
