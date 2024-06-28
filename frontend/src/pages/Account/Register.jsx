@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Form,Input, message} from "antd"
 import { Link, useNavigate } from 'react-router-dom'
 import { OAuth } from '../../components/OAuth'
+import axios from 'axios'
 
 
 export const Register = () => {
@@ -32,13 +33,16 @@ export const Register = () => {
     try {
       setLoading(true)
 
-      const result  = await fetch(`${baseURL}/api/user/register`,{
-        method : "POST",
-        headers : {
-          "Content-Type" : "application/json"
-        },
-        body : JSON.stringify(formData)
-      })
+      // const result  = await fetch(`${baseURL}/api/user/register`,{
+      //   method : "POST",
+      //   headers : {
+      //     "Content-Type" : "application/json"
+      //   },
+      //   body : JSON.stringify(formData)
+      // })
+
+
+      const result = await axios.post("/api/user/register", formData)
       const data = await result.json()
 
       // console.log(result);
