@@ -6,6 +6,7 @@ import axios from "axios"
 import {Form , Input, Select, message} from "antd"
 import TextArea from "antd/es/input/TextArea";
 import moment from "moment";
+import { axiosUrl } from "../../main";
 
 
 export const EditTransaction = () => {
@@ -27,7 +28,7 @@ export const EditTransaction = () => {
 
     const getTransactionData = async () =>{
       try {
-        const res = await axios.get(`/api/transactions/edit-transaction/${id}`)
+        const res = await axiosUrl.get(`/api/transactions/edit-transaction/${id}`)
         const val =  await res.data
         // console.log(res.data);
 
@@ -57,7 +58,7 @@ export const EditTransaction = () => {
     const submitHandler = async (e) =>{
       try {
         e.preventDefault()
-        const res = await axios.get(`/api/transactions/edit-transaction/${id}`)
+        const res = await axiosUrl.get(`/api/transactions/edit-transaction/${id}`)
         // console.log(res.data);
         setReqData(res.data)
       } catch (error) {
@@ -67,7 +68,7 @@ export const EditTransaction = () => {
  
     const updateData = async (values) =>{
       try {
-        const res = await axios.put(`/api/transactions/edit-transaction-id/${id}`,{id,values})
+        const res = await axiosUrl.put(`/api/transactions/edit-transaction-id/${id}`,{id,values})
         // console.log(id);
         console.log("updated successfylly", res.data);
 

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { axiosUrl } from "../../main"
 
 
 export const DeleteTransaction = () => {
@@ -15,7 +16,7 @@ export const DeleteTransaction = () => {
       
       if(confirm("Are you want to delete this")=== true){
 
-        const res = await axios.delete(`/api/transactions/delete-transaction/${id}`)
+        const res = await axiosUrl.delete(`/api/transactions/delete-transaction/${id}`)
         const data = res.data
   
         console.log(data);

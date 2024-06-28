@@ -5,6 +5,7 @@ import TextArea from "antd/es/input/TextArea";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { axiosUrl } from "../../main";
 
 export const AddTransaction = () => {
 
@@ -20,7 +21,7 @@ export const AddTransaction = () => {
       const user = currentUser.rest
       // console.log(user);
 
-      const res = await axios.post("/api/transactions/addtransaction",{...values,userid:user._id})
+      const res = await axiosUrl.post("/api/transactions/addtransaction",{...values,userid:user._id})
       // const res = await axios.post("/api/transactions/addtransaction",{...values,userid:"adadadadadadadadadadadad"})
 
       console.log(res);

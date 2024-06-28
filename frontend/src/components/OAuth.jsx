@@ -4,6 +4,7 @@ import app from "../firebase"
 import { useDispatch } from "react-redux"
 import { loginSuccess } from "../redux/auth/authSlice"
 import { useNavigate } from "react-router-dom"
+import { axiosUrl } from "../main"
 
 
 export const OAuth = () => {
@@ -21,21 +22,24 @@ export const OAuth = () => {
 
       const result = await signInWithPopup(auth, provider)
 
-      const res = await fetch("/api/user/google",{
-        method : "POST",
-        headers : {
-          "Content-Type" : "application/json"
-        },
-        body : JSON.stringify({
-          name : result.user.displayName,
-          email : result.user.email,
-          photo : result.user.photoURL
-        })
-      })
+      // const res = await fetch("/api/user/google",{
+      //   method : "POST",
+      //   headers : {
+      //     "Content-Type" : "application/json"
+      //   },
+      //   body : JSON.stringify({
+      //     name : result.user.displayName,
+      //     email : result.user.email,
+      //     photo : result.user.photoURL
+      //   })
+      // })
 
-      console.log(result);
+      // console.log(result);
       
-      const data = await res.json()
+      // const data = await res.json()
+
+      const res = await axiosUrl.post("/api/user/google", {name : result.user.displayName, email : result.user.email, photo :  result.user.photoURL})
+      const data = await res.data
 
       console.log(data);
 

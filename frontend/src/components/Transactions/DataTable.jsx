@@ -12,6 +12,7 @@ import {Link, useNavigate} from "react-router-dom"
 const {RangePicker} = DatePicker
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { axiosUrl } from "../../main";
 
 
 
@@ -50,7 +51,7 @@ export const DataTable = () => {
       
       const user = currentUser.rest
 
-      const response = await axios.post("/api/transactions/gettransaction",{userid: user._id,frequency,selectedDate,type})
+      const response = await axiosUrl.post("/api/transactions/gettransaction",{userid: user._id,frequency,selectedDate,type})
 
       const val = response.data
       setAlllTransaction(val)
@@ -179,7 +180,7 @@ export const DataTable = () => {
   const exportCSV = async () =>{
     try {
       
-      const response = await axios.post("/api/transactions/transaction-download",{frequency,selectedDate,type})
+      const response = await axiosUrl.post("/api/transactions/transaction-download",{frequency,selectedDate,type})
 
       if(response.status === 200){
 

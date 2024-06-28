@@ -5,6 +5,7 @@ import app from "../firebase"
 
 import { updateUserStart,updateUserSuccess,updateUserFailuer, deleteUserStart, deleteUserFailuer, deleteUserSuccess } from '../redux/auth/authSlice';
 import { message } from 'antd';
+import { axiosUrl } from '../main';
 
 
 
@@ -80,15 +81,18 @@ export const EditProfile = () => {
 
             dispatch(updateUserStart())
             
-            const res = await fetch(`/api/user/update/${currentUser.rest._id}`,{
-                method : "POST",
-                headers : {
-                    "Content-Type" : "application/json"
-                },
-                body : JSON.stringify(formData)
-            })
+            // const res = await fetch(`/api/user/update/${currentUser.rest._id}`,{
+            //     method : "POST",
+            //     headers : {
+            //         "Content-Type" : "application/json"
+            //     },
+            //     body : JSON.stringify(formData)
+            // })
 
-            const data = await res.json()
+            // const data = await res.json()
+
+            const res = await axiosUrl.post(`/api/user/update/${currentUser.rest._id}`, formData)
+            const data = await res.data
             console.log(data);
 
             if(data.success === false){
