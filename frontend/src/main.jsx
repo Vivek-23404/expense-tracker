@@ -10,10 +10,14 @@ import { Provider } from 'react-redux'
 import { persistor, store } from './redux/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
 
-export const baseURL = axios.create({
-    baseURL : import.meta.env.VITE_AXIOS_ORIGIN
-})
 
+
+
+
+axios.defaults.baseURL = import.meta.env.VITE_AXIOS_ORIGIN
+
+
+console.log(import.meta.env.VITE_AXIOS_ORIGIN);
 ReactDOM.createRoot(document.getElementById('root')).render(
 
 

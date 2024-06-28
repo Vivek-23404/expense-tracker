@@ -34,7 +34,7 @@ export const Login = () => {
       dispatch(loginStart())
 
       // setting full url in fetch on login page
-      const result  = await fetch("https://expense-tracker-toa4.onrender.com/api/user/login",{
+      const result  = await fetch("/api/user/login",{
         method : "POST",
         headers : {
           "Content-Type" : "application/json"
