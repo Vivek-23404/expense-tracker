@@ -3,6 +3,7 @@ import {Form,Input, message} from "antd"
 import { Link, useNavigate } from 'react-router-dom'
 import { OAuth } from '../../components/OAuth'
 import axios from 'axios'
+import { axiosUrl } from '../../main'
 
 
 export const Register = () => {
@@ -42,7 +43,7 @@ export const Register = () => {
       // })
 
 
-      const result = await axios.post("/api/user/register", formData)
+      const result = await axiosUrl.post("/api/user/register", formData)
       const data = await result.json()
 
       // console.log(result);
