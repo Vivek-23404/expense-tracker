@@ -7,6 +7,8 @@ import { OAuth } from '../../components/OAuth'
 
 export const Login = () => {
 
+  const baseURL = import.meta.env.VITE_AXIOS_ORIGIN
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [formData, setFormData] = useState({})
@@ -34,7 +36,7 @@ export const Login = () => {
       dispatch(loginStart())
 
       // setting full url in fetch on login page
-      const result  = await fetch("/api/user/login",{
+      const result  = await fetch(`${baseURL}/api/user/login`,{
         method : "POST",
         headers : {
           "Content-Type" : "application/json"

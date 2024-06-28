@@ -7,6 +7,8 @@ import { OAuth } from '../../components/OAuth'
 export const Register = () => {
 
 
+  const baseURL = import.meta.env.VITE_AXIOS_ORIGIN
+
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
 
@@ -30,7 +32,7 @@ export const Register = () => {
     try {
       setLoading(true)
 
-      const result  = await fetch(`/api/user/register`,{
+      const result  = await fetch(`${baseURL}/api/user/register`,{
         method : "POST",
         headers : {
           "Content-Type" : "application/json"
