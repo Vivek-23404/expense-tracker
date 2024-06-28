@@ -8,7 +8,7 @@ import { axiosUrl } from '../../main'
 
 export const Register = () => {
 
-  // console.log(axiosUrl);
+  console.log(axiosUrl.defaults.baseURL);
 
 
   // const baseURL = import.meta.env.VITE_AXIOS_ORIGIN
