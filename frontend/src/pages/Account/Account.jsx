@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOutUser } from '../../redux/auth/authSlice'
 import { message } from 'antd'
+import { axiosUrl } from '../../main'
 
 export const Account = () => {
 
@@ -15,9 +16,9 @@ export const Account = () => {
     const handleLogout = async () =>{
 
         try {
-            const res = await fetch("/api/user/logout")
+            const res = await axiosUrl("/api/user/logout")
+            const data = await res.data
             dispatch(logOutUser())
-            const data = await res.json()
             message.success(data.message)
         } catch (error) {
             console.log(error);
