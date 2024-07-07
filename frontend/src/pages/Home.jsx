@@ -22,7 +22,7 @@ export const Home = () => {
         </div>
         <div className='flex-1 overflow-y-scroll'>
           <div className='p-4'>
-          <Outlet/>
+            <Outlet/>
           </div>
         </div>
     </div>

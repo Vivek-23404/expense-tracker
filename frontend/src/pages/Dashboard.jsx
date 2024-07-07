@@ -152,7 +152,7 @@ export const Dashboard = () => {
 
     const setBarChartValueFun = () =>{
       const barAmount = []
-      const labels = []
+      const barlabels = []
 
       
 
@@ -162,17 +162,14 @@ export const Dashboard = () => {
         .filter((transaction)=> transaction.category === category)
         .reduce((acc, transaction) => acc + transaction.amount, 0)
           barAmount.push(amount);
-          labels.push(category)
+          barlabels.push(category)
       });
-      console.log(labels[0]);
-
-
 
       serBarChartData({
-        labels : labels,
+        labels : barlabels,
         datasets: [
           {
-            label: "Expense",
+            label : "Income chart",
             data : barAmount,
             backgroundColor: [
               "rgb(255, 99, 132)",
@@ -366,25 +363,25 @@ export const Dashboard = () => {
         {/* Display Charts */}
         <div className="flex flex-col md:flex-row gap-2">
 
-            {/* Expense Chart */}
+            {/* Income Chart */}
             <div className="flex flex-col justify-between md:w-1/2 border-4 p-4 rounded-md">
               <div className="text-center">
-                <h1>Expense Bar Chart</h1>
+                <h1>Income Bar Chart</h1>
               </div>
 
               <div className="h-64">
-                <Bar className="" data={barChartData} options={{maintainAspectRatio : false, responsive : true}}  />
+                <Bar className="" data={donutData} options={{maintainAspectRatio : false, responsive : true}}  />
               </div>
             </div>
 
 
-            {/* Income Chart */}
+            {/* Expense Chart */}
             <div className="flex flex-col justify-between md:w-1/2 border-4 p-4 rounded-md">
               <div className="text-center">
-                <h1>Income Pie Chart</h1>
+                <h1>Expense Pie Chart</h1>
               </div>
               <div className="h-64">
-                <Doughnut data={donutData} options={{ maintainAspectRatio : false, responsive : true}} />
+                <Doughnut data={barChartData} options={{ maintainAspectRatio : false, responsive : true}} />
               </div>
             </div>
         </div>
