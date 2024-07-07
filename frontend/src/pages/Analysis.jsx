@@ -1,31 +1,18 @@
-import { Select } from 'antd';
-import { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+
 
 export const Analysis = () => {
 
 
-  const [frequency , setFrequency] = useState("7")
-
-  const navigate = useNavigate()
-
-
-  const addTransaction = () =>{
-    navigate("/transactions/addtransaction")
-  }
+  
   return (
-    <div className='flex w-full -z-50 p-5'>
-     <div>
-      <h3>Select Date</h3>
-      <Select value={frequency} onChange={(values)=> setFrequency(values) }>
-        <Select.Option value="7">Last 7 Days</Select.Option>
-        <Select.Option value="30">Last 30 Days</Select.Option>
-        <Select.Option value="365">Last 365 Days</Select.Option>
-        <Select.Option value="custom">Custom</Select.Option>
-      </Select>
-     </div>
-     <Outlet/>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="text-center p-8 bg-white shadow-lg rounded-lg">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Coming Soon</h1>
+        <p className="text-lg text-gray-600 mb-8">
+          We are working hard to bring you this feature. Stay tuned!
+        </p>
+      </div>
     </div>
-  )
+  );
 }
 

@@ -1,5 +1,4 @@
-import { message, Select, DatePicker, Progress } from "antd";
-import axios from "axios";
+import { message, Select, DatePicker } from "antd";
 import {   useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import {Chart as ChartJS, Tooltip, ArcElement,Legend , CategoryScale,LinearScale,registerables} from "chart.js"
@@ -70,28 +69,28 @@ export const Dashboard = () => {
     ]
   })
 
-  const BarChartOptions = {
-    responsive : true,  
-    plugins: {
-      legend: {
-        position: "bottom",
-        display: false,
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          display: false,
-        },
-      },
-      x: {
-        grid: {
-          display: false,
-        },
-      },
-    },
-  }
+  // const BarChartOptions = {
+  //   responsive : true,  
+  //   plugins: {
+  //     legend: {
+  //       position: "bottom",
+  //       display: false,
+  //     },
+  //   },
+  //   scales: {
+  //     y: {
+  //       beginAtZero: true,
+  //       grid: {
+  //         display: false,
+  //       },
+  //     },
+  //     x: {
+  //       grid: {
+  //         display: false,
+  //       },
+  //     },
+  //   },
+  // }
 
   const [donutData,setDonutData] = useState({
     labels: [
@@ -153,23 +152,27 @@ export const Dashboard = () => {
 
     const setBarChartValueFun = () =>{
       const barAmount = []
-      const barLabels = []
+      const labels = []
+
+      
 
       categegories.map((category) =>{
         const amount = allTransaction
-        .filter((transaction) => transaction.type === "expense" && transaction.category === category)
+        .filter((transaction) => transaction.type === "expense")
         .filter((transaction)=> transaction.category === category)
         .reduce((acc, transaction) => acc + transaction.amount, 0)
           barAmount.push(amount);
-          barLabels.push(category)
+          labels.push(category)
       });
+      console.log(labels[0]);
+
 
 
       serBarChartData({
-        labels : barLabels,
+        labels : labels,
         datasets: [
           {
-            label : barLabels,
+            label: "Expense",
             data : barAmount,
             backgroundColor: [
               "rgb(255, 99, 132)",
@@ -183,11 +186,14 @@ export const Dashboard = () => {
 
 
     };
+
+    
     
     // PIE Chart
     const setDonutChartValueFun = () => {
       const dataAmount = [];
       const labels = [];
+      
 
       categegories.map((category) => {
         const amount = allTransaction
@@ -199,6 +205,7 @@ export const Dashboard = () => {
         labels.push(category);
 
       });
+      console.log(labels);
 
       setDonutData({
         labels: labels,
@@ -250,14 +257,15 @@ export const Dashboard = () => {
 
 
   const totalIncomeTurnoverPercent = Math.round((totalIncomeTurnover/totalTurnOver) * 100)
-
-  const totalExpenseTurnoverPercent = Math.round((totalExpenseTurnover/totalIncomeTurnover) * 100)
+  
+  const totalExpenseTurnoverPercent = Math.round((totalExpenseTurnover/totalTurnOver) * 100)
+  console.log(totalExpenseTurnoverPercent);
 
 
   const totalSaving = totalIncomeTurnover - totalExpenseTurnover
 
 
-  console.log("object");
+
 
 
   useEffect(()=>{
@@ -271,16 +279,13 @@ export const Dashboard = () => {
 
   // 
 
-  console.log("rerender done");
-  console.log(allTransaction);
+  // console.log(allTransaction);
 
   return (
 
-    <div className="flex flex-col h-screen justify-between p-4">
-      <div className="flex flex-col  w-full justify-between gap-5 h-screen">
+    <div className="flex flex-col h-screen justify-between p-4 gap-4 font-poppins">
         {/* Filter Mode */}
-
-        <div className="flex justify-evenly items-center flex-wrap w-full">
+        <div className="flex justify-evenly items-center flex-wrap w-full ">
           {/* Date Filter */}
           <div className="w-full sm:w-auto">
             <h3>Select Date</h3>
@@ -315,11 +320,13 @@ export const Dashboard = () => {
           </div>
         </div>
 
+      <div className="flex flex-col w-full justify-evenly gap-5 h-screen">
+
         {/* Display Money Data*/}
         <div className="flex flex-col md:flex md:flex-row justify-between items-center  font-medium gap-2">
             
             {/* Section : 1 */}
-            <div className="flex gap-1 flex-col p-7 bg-green-100 text-green-600 rounded-md w-full">
+            <div className="flex gap-1 flex-col p-7 bg-[#208b3a] text-white rounded-md w-full">
               <div>
                 <h3>Total Income</h3>
                 <h3 className="font-bold text-2xl">{totalIncomeTurnover}</h3>
@@ -332,48 +339,47 @@ export const Dashboard = () => {
 
 
             {/* Section : 2 */}
-            <div className="flex flex-col gap-1 p-7 bg-red-100 text-red-600 rounded-md w-full">
+            <div className="flex flex-col gap-1 p-7 bg-[#d00000] text-white rounded-md w-full">
               <div>
                 <h3>Total Expense</h3>
                 <h3 className="font-bold text-2xl">{totalExpenseTurnover} </h3>
               </div>
 
               <div>
-                <h3>{totalExpenseTurnoverPercent} %</h3>
+                <h3>{  totalExpenseTurnoverPercent } %</h3>
               </div>
             </div>
 
 
             {/* Section : 3 */}
-            <div className="flex flex-col gap-1 p-7 bg-blue-100 text-blue-600 rounded-md w-full">
+            <div className="flex flex-col gap-1 p-7 bg-blue-900 text-white rounded-md w-full">
               <div>
                 <h3>Total Saving</h3>
                 <h3 className="font-bold text-2xl">{totalSaving}</h3>
               </div>
               <div>
-                <h3 className="">{totalTurnOver}</h3>
+                <h3 className="">Total Amount {totalTurnOver}</h3>
               </div>
             </div>
         </div>
 
         {/* Display Charts */}
-        <div className="flex flex-col  md:flex-row gap-4 h-full ">
+        <div className="flex flex-col md:flex-row gap-2">
 
             {/* Expense Chart */}
-            <div className="flex flex-col  justify-center  md:w-1/2   bg-blue-100 p-4 rounded-md">
+            <div className="flex flex-col justify-between md:w-1/2 border-4 p-4 rounded-md">
               <div className="text-center">
                 <h1>Expense Bar Chart</h1>
               </div>
 
               <div className="h-64">
                 <Bar className="" data={barChartData} options={{maintainAspectRatio : false, responsive : true}}  />
-                {/* <Line  data={barChartData}/> */}
               </div>
             </div>
 
 
             {/* Income Chart */}
-            <div className="flex flex-col justify-center md:w-1/2  bg-green-100 p-4 rounded-md">
+            <div className="flex flex-col justify-between md:w-1/2 border-4 p-4 rounded-md">
               <div className="text-center">
                 <h1>Income Pie Chart</h1>
               </div>

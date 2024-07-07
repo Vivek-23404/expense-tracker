@@ -15,10 +15,10 @@ export const SideLayout = ({navbarOpen,handleSidebarClick}) => {
     <>
         <Sidebar navbarOpen={navbarOpen}  handleSidebarClick={handleSidebarClick}>
           <Link className={location.pathname === "/" ? "bg-slate-900 text-white rounded-md" : ""} onClick={handleSidebarClick}  to="/"> <SidebarItem icon={<AiFillHome size={20} />}  alert text="Dashboard" /></Link>
-          <Link onClick={handleSidebarClick} to="/analysis"> <SidebarItem icon={<HiDocumentSearch size={20} />} text="Analysis"/></Link>
-          <Link  className={location.pathname === "/transactions"  ? "bg-slate-900 text-white rounded-md" : ""} onClick={handleSidebarClick} to="/transactions"> <SidebarItem icon={<FaRupeeSign size={20} />} text="Transactions" /></Link>
-          <Link onClick={handleSidebarClick} to="/calander"><SidebarItem icon={<HiClipboardList size={20} />} text="Calender" /></Link>
-          <Link onClick={handleSidebarClick} to="/account"><SidebarItem icon={<MdAccountCircle size={20} />} text="Account" /></Link>
+          <Link className={location.pathname === "/analysis" ? "bg-slate-900 text-white rounded-md" : ""} onClick={handleSidebarClick} to="/analysis"> <SidebarItem icon={<HiDocumentSearch size={20} />} text="Analysis"/></Link>
+          <Link className={location.pathname === "/transactions"  ? "bg-slate-900 text-white rounded-md" : ""} onClick={handleSidebarClick} to="/transactions"> <SidebarItem icon={<FaRupeeSign size={20} />} text="Transactions" /></Link>
+          <Link className={location.pathname === "/calander" ? "bg-slate-900 text-white rounded-md" : ""} onClick={handleSidebarClick} to="/calander"><SidebarItem icon={<HiClipboardList size={20} />} text="Calender" /></Link>
+          <Link className={location.pathname === "/account" ? "bg-slate-900 text-white rounded-md" : ""} onClick={handleSidebarClick} to="/account"><SidebarItem icon={<MdAccountCircle size={20} />} text="Account" /></Link>
         </Sidebar>
     </>
   )

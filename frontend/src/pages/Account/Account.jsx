@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOutUser } from '../../redux/auth/authSlice'
 import { message } from 'antd'
@@ -30,7 +29,7 @@ export const Account = () => {
 <div className="flex flex-col items-center h-screen w-full justify-center gap-3">
 
     <div className="w-72">
-        <div className="bg-white shadow-xl rounded-lg py-3">
+        <div className="bg-gray-100 shadow-xl rounded-lg py-3">
             <div className="photo-wrapper p-2">
 
                 {currentUser ? (
@@ -76,7 +75,7 @@ export const Account = () => {
 
     </div>
 
-    <button onClick={handleLogout} className=''>log out</button>
+    <button className="bg-slate-700 text-white rounded px-2 py-1" onClick={handleLogout} >log out</button>
 
 </div>
   )

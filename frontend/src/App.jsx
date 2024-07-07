@@ -1,4 +1,4 @@
-import { Routes,Route, Navigate, Outlet } from "react-router-dom"
+import { Routes,Route} from "react-router-dom"
 
 
 
@@ -22,7 +22,7 @@ import { DeleteTransaction } from "./components/Transactions/DeleteTransaction"
 
 function App() {
   return (
-    <>
+    <div className="font-poppins">
         <Routes>
           <Route   path="/login" element={<Login/>}/>
           <Route  path="/register" element={<Register/>}/>
@@ -44,7 +44,7 @@ function App() {
 
         </Routes>       
 
-    </>
+    </div>
   );
 }
 
