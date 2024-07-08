@@ -20,8 +20,8 @@ const corsOptions = {
   methods: ["GET","POST","PUT","DELETE","PATCH"],
   credentials : true,
 }
-app.use(express.json())
 app.use(cors(corsOptions))
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
