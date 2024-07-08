@@ -12,8 +12,7 @@ const port = 3000
 const app = express()
 
 // DB connection
-connectDB()
-app.use(cookieParser())
+
 const corsOptions = {
   origin : ["https://expense-tracker-taupe-nine.vercel.app","http://localhost:5173"],
   // origin : "*",
@@ -26,9 +25,12 @@ const corsOptions = {
   // },
   
 }
-app.use(cors(corsOptions))
 app.use(express.json())
+app.use(cookieParser())
+app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: true }));
+
+connectDB()
 
 //Middleware
 
