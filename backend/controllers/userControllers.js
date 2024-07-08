@@ -3,7 +3,10 @@ import { errorHandler } from "../utils/error.js"
 
 export const updateUser = async (req,res,next) =>{
 
+  console.log("update user controller", req.user.id);
+  console.log("update user controller", req.params.id);
   if(req.user.id !== req.params.id){
+
     // return res.status(401).json({message : "You can Update only your account"})
     return next(errorHandler(401,"You can Update only your account"))
   }

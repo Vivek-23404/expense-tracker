@@ -1,9 +1,11 @@
 import jwt from "jsonwebtoken"
 import { errorHandler } from "./error.js";
 
+
+
 export const varifyToken = async (req,res,next) =>{
   // const token = await req.cookies.access_token;
-  const token = await req.cookies;
+  const token = await req.cookies.access_token;
   console.log(token);
 
   // if(!token) return res
@@ -15,9 +17,12 @@ export const varifyToken = async (req,res,next) =>{
   if(token){
     jwt.verify(token, process.env.JWT_SECRET, (err, user)=>{
       // if(err) return res.status(403).json({message : "Token is invalid"})
-      if(err) return next(errorHandler(403, "Token is invalid"))
+      if(err){
+        return errorHandler(403, "Token Invalid")
+      } 
 
       req.user = user
+      console.log(user);
       next()
     })
   }
