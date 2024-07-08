@@ -3,6 +3,7 @@ import { errorHandler } from "./error.js";
 
 export const varifyToken = (req,res,next) =>{
   const token = req.cookies.access_token;
+  console.log(token);
 
   // if(!token) return res
   //   .status(401)
