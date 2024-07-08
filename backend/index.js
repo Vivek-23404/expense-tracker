@@ -19,10 +19,9 @@ const corsOptions = {
   // methods: "GET,POST,PUT,DELETE,PATCH",
   methods: ["GET","POST","PUT","DELETE","PATCH"],
   credentials : true,
-  // headers: {
-  //   'Content-Type': 'application/json',
-  //   "Access-Control-Allow-Origin": "*"
-  // },
+  headers: {
+    'Content-Type': 'application/json',
+  },
   
 }
 app.use(express.json())
