@@ -18,9 +18,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 export const axiosUrl = axios.create({
     withCredentials : true,
     baseURL : import.meta.env.VITE_BASE_URL,
-    headers : {
-        "Content-Type" : "application/json"
-    },
 })
 ReactDOM.createRoot(document.getElementById('root')).render(
 

@@ -12,7 +12,10 @@ export const varifyToken =  (req,res,next) =>{
   //   .status(401)
   //   .json({message : "Access Denied"})
 
-  if(!token) return next(errorHandler(401, "Access Denied"))
+  if(!token) {
+
+    next(errorHandler(401, "Access Denied"))
+  } 
 
   if(token){
     jwt.verify(token, process.env.JWT_SECRET, (err, user)=>{
