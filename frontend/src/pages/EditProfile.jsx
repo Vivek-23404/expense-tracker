@@ -90,6 +90,7 @@ export const EditProfile = () => {
             // })
 
             // const data = await res.json()
+            axiosUrl.defaults.withCredentials = true
 
             const res = await axiosUrl.post(`/api/user/update/${currentUser.rest._id}`, formData)
             console.log(res);
