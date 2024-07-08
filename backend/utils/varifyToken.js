@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken"
 import { errorHandler } from "./error.js";
 
-export const varifyToken = (req,res,next) =>{
-  const token = req.cookies.access_token;
+export const varifyToken = async (req,res,next) =>{
+  const token = await req.cookies.access_token;
   console.log(token);
 
   // if(!token) return res
