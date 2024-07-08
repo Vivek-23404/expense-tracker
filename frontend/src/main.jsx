@@ -16,10 +16,9 @@ import { PersistGate } from 'redux-persist/integration/react'
 // axios.defaults.baseURL = import.meta.env.VITE_AXIOS_ORIGIN
 
 export const axiosUrl = axios.create({
+    withCredentials : true,
     baseURL : import.meta.env.VITE_BASE_URL
 })
-
-console.log(import.meta.env.BASE_URL);
 ReactDOM.createRoot(document.getElementById('root')).render(
 
 

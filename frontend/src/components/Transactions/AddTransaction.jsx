@@ -2,7 +2,6 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Form, Input, Select, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { axiosUrl } from "../../main";
@@ -81,8 +80,8 @@ export const AddTransaction = () => {
         </Form.Item>
 
 
-        <div  className="flex justify-center items-center p-3 bg-slate-700 text-white font-bold rounded-lg cursor-pointer">
-          <button>Save</button>
+        <div  >
+          <button className="flex justify-center items-center w-full p-3 bg-slate-700 text-white font-bold rounded-lg cursor-pointer">Save</button>
         </div>
 
       </Form>

@@ -89,7 +89,7 @@ export const EditTransaction = () => {
 
   return (
     <div className="p-10 w-full flex flex-col  items-center gap-10">
-      <div className="w-full">Edit Your Transaction Details</div>
+      <div className="md:w-96 w-40">Edit Your Transaction Details
 
       {/* Transactions Input */}
 
@@ -131,13 +131,17 @@ export const EditTransaction = () => {
         <Form.Item label="Details"   name="details">
           <TextArea   rows={4}/>
         </Form.Item>
-      <button>Save</button>
+      <button className="flex justify-center items-center w-full p-3 bg-slate-700 text-white font-bold rounded-lg cursor-pointer">
+        Save
+      </button>
       </Form>
 
 
       <ToastContainer
       position="top-right"
       />
+
+</div>
 </div>
   )
 }

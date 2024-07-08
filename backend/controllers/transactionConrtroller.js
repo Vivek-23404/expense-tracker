@@ -181,7 +181,9 @@ export const exportCSV = async (req,res) =>{
 
     writableStream.on("finish",function (){
       res.json({
-        downloadURL : "http://localhost:3000/files/export/transactions.csv"
+        downloadURL : "http://localhost:3000/files/export/transactions.csv",
+        success : true,
+        message : "CSV Downloaded"
       })
     })
 
@@ -207,12 +209,12 @@ export const exportCSV = async (req,res) =>{
     csvStream.end()
     writableStream.end()
 
-    res.json({
-      success : true,
-      message : "CSV Download success"
-    })
+    // res.json({
+    //   success : true,
+    //   message : "CSV Download success"
+    // })
   } catch (error) {
-    res.status(401).json(error)
+    res.status(401).json(error) 
     console.log(error);
   }
-}
+} 

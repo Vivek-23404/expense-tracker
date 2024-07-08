@@ -37,10 +37,7 @@ export const loginController = async (req, res,next) =>{
 
 
 
-    res
-    .cookie("access_token", token , {httpOnly : true, expires : expiryDate})
-    .status(200)
-    .json({
+    res.cookie("access_token", token , {httpOnly : true, expires : expiryDate}).status(200).json({
       success : true,
       validUser,
       rest,

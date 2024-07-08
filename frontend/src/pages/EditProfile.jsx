@@ -21,7 +21,7 @@ export const EditProfile = () => {
     const [formData, setFormData] = useState({})
 
 
-    const [updateButtonSuccess, setupdateButtonSuccess] = useState(false)
+    // const [updateButtonSuccess, setupdateButtonSuccess] = useState(false)
 
 
     
@@ -92,8 +92,8 @@ export const EditProfile = () => {
             // const data = await res.json()
 
             const res = await axiosUrl.post(`/api/user/update/${currentUser.rest._id}`, formData)
+            console.log(res);
             const data = await res.data
-            console.log(data);
 
             if(data.success === false){
                 dispatch(updateUserFailuer(data))
@@ -104,7 +104,8 @@ export const EditProfile = () => {
             message.success(data.message)
         } catch (error) {
             dispatch(updateUserFailuer(error))
-            message.error(data.message)
+            // message.error(data.message)
+            console.log(error);
         }
     }
 
@@ -113,13 +114,9 @@ export const EditProfile = () => {
 
         try {
             dispatch(deleteUserStart())
-        const res = await fetch(`/api/user/delete/${currentUser.rest._id}`,{
-            method : "DELETE"
-        }) 
-
-        const data = await res.json()
-
-        message.success(data.message)
+            const res = await axiosUrl.delete(`/api/user/delete/${currentUser.rest._id}`)
+            const data = await res.data
+            message.success(data.message)
 
         if(data.success === false){
             dispatch(deleteUserFailuer(data))

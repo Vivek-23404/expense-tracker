@@ -69,35 +69,9 @@ export const Dashboard = () => {
     ]
   })
 
-  // const BarChartOptions = {
-  //   responsive : true,  
-  //   plugins: {
-  //     legend: {
-  //       position: "bottom",
-  //       display: false,
-  //     },
-  //   },
-  //   scales: {
-  //     y: {
-  //       beginAtZero: true,
-  //       grid: {
-  //         display: false,
-  //       },
-  //     },
-  //     x: {
-  //       grid: {
-  //         display: false,
-  //       },
-  //     },
-  //   },
-  // }
 
   const [donutData,setDonutData] = useState({
-    labels: [
-      'Red',
-      'Blue',
-      'Yellow'
-    ],
+    labels: ['Red','Blue','Yellow'],
     datasets: [{
       label: 'My First Dataset',
       data: [300, 50, 100],
@@ -122,25 +96,6 @@ export const Dashboard = () => {
       console.log(val);
       
       
-      // {
-      //   labels: [
-      //     'Red',
-      //     'Blue',
-      //     'Yellow'
-      //   ],
-      //   datasets: [{
-      //     label: 'My First Dataset',
-      //     data: [300, 50, 100],
-      //     backgroundColor: [
-      //       'rgb(255, 99, 132)',
-      //       'rgb(54, 162, 235)',
-      //       'rgb(255, 205, 86)'
-      //     ],
-      //     hoverOffset: 4
-      //   }]
-      // }
-
-      
     } catch (error) {
       console.log(error);
       message.error("Something is Wrong")
@@ -158,7 +113,7 @@ export const Dashboard = () => {
 
       categegories.map((category) =>{
         const amount = allTransaction
-        .filter((transaction) => transaction.type === "expense")
+        .filter((transaction) => transaction.type === "income")
         .filter((transaction)=> transaction.category === category)
         .reduce((acc, transaction) => acc + transaction.amount, 0)
           barAmount.push(amount);
@@ -169,7 +124,7 @@ export const Dashboard = () => {
         labels : barlabels,
         datasets: [
           {
-            label : "Income chart",
+            label : "Income",
             data : barAmount,
             backgroundColor: [
               "rgb(255, 99, 132)",
@@ -195,7 +150,7 @@ export const Dashboard = () => {
       categegories.map((category) => {
         const amount = allTransaction
           .filter((transaction) => transaction.category === category)
-          .filter((transaction) => transaction.type === "income")
+          .filter((transaction) => transaction.type === "expense")
           .reduce((acc, transaction) => acc + transaction.amount, 0);
 
         dataAmount.push(amount);
@@ -208,7 +163,7 @@ export const Dashboard = () => {
         labels: labels,
         datasets: [
           {
-            // label: "My First Dataset",
+            label: "Income",
             data: dataAmount,
             backgroundColor: [
               "rgb(255, 99, 132)",
@@ -370,7 +325,7 @@ export const Dashboard = () => {
               </div>
 
               <div className="h-64">
-                <Bar className="" data={donutData} options={{maintainAspectRatio : false, responsive : true}}  />
+                <Bar className="" data={barChartData} options={{maintainAspectRatio : false, responsive : true}}  />
               </div>
             </div>
 
@@ -381,7 +336,7 @@ export const Dashboard = () => {
                 <h1>Expense Pie Chart</h1>
               </div>
               <div className="h-64">
-                <Doughnut data={barChartData} options={{ maintainAspectRatio : false, responsive : true}} />
+                <Doughnut data={donutData} options={{ maintainAspectRatio : false, responsive : true}} />
               </div>
             </div>
         </div>
@@ -557,6 +512,30 @@ export const Dashboard = () => {
               </div> */}
 
 
+
+              
+  // const BarChartOptions = {
+  //   responsive : true,  
+  //   plugins: {
+  //     legend: {
+  //       position: "bottom",
+  //       display: false,
+  //     },
+  //   },
+  //   scales: {
+  //     y: {
+  //       beginAtZero: true,
+  //       grid: {
+  //         display: false,
+  //       },
+  //     },
+  //     x: {
+  //       grid: {
+  //         display: false,
+  //       },
+  //     },
+  //   },
+  // }
 
 
 

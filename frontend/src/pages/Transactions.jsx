@@ -7,15 +7,15 @@ import { DataTable } from '../components/Transactions/DataTable'
 export const Transactions = () => {
   return (
     <div className='flex flex-col gap-2 z-30 p-5'>
-      <div className='flex justify-between items-center bg-gray-200 p-2 rounded-md'>
+      <div className='flex justify-between items-center bg-gray-200 p-2 gap-2  rounded-md'>
         <h1>Transactions</h1>
         <Link to="/addtransaction">
-          <button className='bg-slate-700 text-white rounded-md p-1'>
+          <button className='bg-slate-700 text-white rounded-md p-1 text-sm md:px-4 md:py-2'>
             Add Transactions
           </button>
         </Link>
         <Link to="/gettransaction">
-          <button className='bg-slate-700 text-white rounded-md p-1'>
+          <button className='bg-slate-700 text-white rounded-md p-1 text-sm md:px-4 md:py-2'>
             Get Transactions
             
           </button>

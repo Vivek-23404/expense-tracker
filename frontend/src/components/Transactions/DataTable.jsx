@@ -1,12 +1,11 @@
 
 import { message, Select, Table, DatePicker } from "antd";
-import axios from "axios";
-import {  useEffect, useMemo, useState } from "react"
+import {  useEffect, useState } from "react"
 import moment from "moment";
 // import {useReactTable, getCoreRowModel, flexRender} from "@tanstack/react-table"
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import {Link, useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 
 const {RangePicker} = DatePicker
@@ -24,7 +23,7 @@ export const DataTable = () => {
 
   const {currentUser} = useSelector((state)=>state.auth)
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
 
 
@@ -78,41 +77,41 @@ export const DataTable = () => {
 
 
 
-  const totalTrinsaction = allTransaction.length
-  const totalIncomeTrinsaction = allTransaction.filter(transaction => transaction.type === "income")
-  const totalExpenseTrinsaction = allTransaction.filter(transaction => transaction.type === "expense")
+  // const totalTrinsaction = allTransaction.length
+  // const totalIncomeTrinsaction = allTransaction.filter(transaction => transaction.type === "income")
+  // const totalExpenseTrinsaction = allTransaction.filter(transaction => transaction.type === "expense")
 
-  const totalIncomePersentage = (totalIncomeTrinsaction/totalTrinsaction) * 100
-  const totalExpensePersentage = (totalExpenseTrinsaction/totalTrinsaction) * 100
+  // const totalIncomePersentage = (totalIncomeTrinsaction/totalTrinsaction) * 100
+  // const totalExpensePersentage = (totalExpenseTrinsaction/totalTrinsaction) * 100
 
 
 
 
   // turn over
-  const totalTurnOver = allTransaction.reduce((acc,transaction)=> acc + transaction.amount, 0)
+  // const totalTurnOver = allTransaction.reduce((acc,transaction)=> acc + transaction.amount, 0)
 
-  // total Income
+  // // total Income
 
-  const totalIncomeTurnover = allTransaction.filter(transaction => transaction.type === "income")
-  .reduce((acc,transaction)=> acc + transaction.amount,0)
+  // const totalIncomeTurnover = allTransaction.filter(transaction => transaction.type === "income")
+  // .reduce((acc,transaction)=> acc + transaction.amount,0)
 
-  // console.log(totalIncomeTurnover);
-
-
-  // total Expense
-  const totalExpenseTurnover = allTransaction.filter(transaction => transaction.type === "expense")
-  .reduce((acc,transaction)=> acc + transaction.amount,0)
+  // // console.log(totalIncomeTurnover);
 
 
-  const totalIncomeTurnoverPercent = (totalIncomeTurnover/totalTurnOver) * 100
+  // // total Expense
+  // const totalExpenseTurnover = allTransaction.filter(transaction => transaction.type === "expense")
+  // .reduce((acc,transaction)=> acc + transaction.amount,0)
 
-  const totalExpenseTurnoverPercent = (totalExpenseTurnover/totalIncomeTurnover) * 100
+
+  // const totalIncomeTurnoverPercent = (totalIncomeTurnover/totalTurnOver) * 100
+
+  // const totalExpenseTurnoverPercent = (totalExpenseTurnover/totalIncomeTurnover) * 100
 
 
-  const handleEditClick = (e) =>{
-    navigate(`/edit-transaction/${dataWithKey}`)
-    console.log(e);
-  }
+  // const handleEditClick = (e) =>{
+  //   navigate(`/edit-transaction/${dataWithKey}`)
+  //   console.log(e);
+  // }
 
 
 
@@ -150,7 +149,7 @@ export const DataTable = () => {
         <div className="flex gap-5">
           <Link to={`/edit-transaction-id/${record.key}`}>
             <MdModeEdit  size={20} />
-            {console.log(record)}
+            {/* {console.log(record)} */}
           </Link>
 
           <Link to={`/delete-transaction/${record.key}`}>
@@ -173,7 +172,7 @@ export const DataTable = () => {
     details : row.details
   }
   ))
-  console.log(dataWithKey);
+  // console.log(dataWithKey);
 
 
 
@@ -182,9 +181,9 @@ export const DataTable = () => {
       
       const response = await axiosUrl.post("/api/transactions/transaction-download",{frequency,selectedDate,type})
 
-      if(response.status === 200){
-
+      if(response.data.success === true){
         window.open(response.data.downloadURL, "blank")
+        message.success(response.data.message)
       }else{
         toast.error("Error")
       }
@@ -286,7 +285,7 @@ export const DataTable = () => {
             
 
 
-            <button onClick={exportCSV} className="w-28 h-10 bg-slate-700 text-white rounded-md ">Export</button>
+            <button onClick={exportCSV} className=" bg-slate-700 text-white rounded-md text-sm px-5 md:px-7 ">Export</button>
           
           
           </div>
