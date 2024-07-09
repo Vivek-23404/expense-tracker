@@ -1,5 +1,6 @@
 import userModel from "../models/userModels.js"
 import { errorHandler } from "../utils/error.js"
+import bcryptjs from "bcryptjs"
 
 export const updateUser = async (req,res,next) =>{
 
@@ -30,9 +31,7 @@ export const updateUser = async (req,res,next) =>{
     )
 
     const {password, ...rest} = updatedUser._doc
-    res
-      .status(200)
-      .json({
+    return res.status(200).json({
         rest,
         success : true,
         message : "User Updated Successfully"
