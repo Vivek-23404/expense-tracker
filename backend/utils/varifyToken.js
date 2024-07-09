@@ -13,7 +13,6 @@ export const varifyToken =  (req,res,next) =>{
   //   .json({message : "Access Denied"})
 
   if(!token) {
-
     next(errorHandler(401, "Access Denied"))
   } 
 
