@@ -91,6 +91,7 @@ export const Register = () => {
           id='name'
           className='bg-slate-100 p-3 rounded-lg'
           onChange={handleChange} 
+          required
           />
           <input 
           type="email" 
@@ -98,6 +99,7 @@ export const Register = () => {
           id='email' 
           className='bg-slate-100 p-3 rounded-lg'
           onChange={handleChange} 
+          required
           />
           <input 
           type="password" 
@@ -105,6 +107,7 @@ export const Register = () => {
           id='password' 
           className='bg-slate-100 p-3 rounded-lg'
           onChange={handleChange} 
+          required
           />
 
 

@@ -69,6 +69,7 @@ export const Login = () => {
       
       
     } catch (error) {
+      message.error()
       dispatch(loginFailure(error))
 
     }
@@ -89,6 +90,7 @@ export const Login = () => {
           id='email' 
           className='bg-slate-100 p-3 rounded-lg'
           onChange={handleChange} 
+          required
           />
           <input 
           type="password" 
@@ -96,6 +98,7 @@ export const Login = () => {
           id='password' 
           className='bg-slate-100 p-3 rounded-lg'
           onChange={handleChange} 
+          required
           />
 
 
